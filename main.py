@@ -1,5 +1,5 @@
 from os import system
-from amazon_inventory_oop import *
+from inventory_manager import *
 
 clear_crt = "clear"
 filename = "warehouse_inventory.csv"
@@ -21,7 +21,6 @@ class MenuManager:
         print(" 7. Sort By Expiration Date")
         print(" 8. Sort By Price")
         print(" 9. Sort By Quantity")
-        print("10. Restore A Backup")
         print(f"\n 0. Quit\n")
 
     def get_choice(self):
@@ -87,14 +86,6 @@ class MenuManager:
                 inventory.print_sorted_by_quantity()
                 input("\nPress <ENTER> to continue.\n")
 
-            case 10:
-                system(clear_crt)
-                print("\nRestore data from an existing backup\n")
-                v_manager.restore_version(filename)
-                # inventory.__init__()  # Reload the CSV-file into self.data, ask Markus how to improve (smelly code)
-                inventory.reload_data()
-                input("\nPress <ENTER> to continue.\n")
-
             case 0:
                 system(clear_crt)
                 print("\nThank you for using this program!\n")
@@ -107,7 +98,6 @@ class MenuManager:
 # Main part
 warehouse = MenuManager()
 inventory = InventoryManager()
-v_manager = VersionManager()
 
 # Main loop
 while warehouse.running:

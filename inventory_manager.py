@@ -1,8 +1,6 @@
 import csv
+import os
 from datetime import datetime
-from version_system_oop import *
-from userauth_oop import authenticate_user
-from extra_decorators_oop import progress_bar, create_backups
 
 class Item:
     """Represents an item in the warehouse inventory."""
@@ -66,9 +64,6 @@ class InventoryManager:
         """Reloads the inventory data from the CSV file."""
         self.data = self.load_data()
 
-    @progress_bar
-    # @create_backups(FILENAME, 5)
-    @use_version_system_oop
     def write_data(self,*args, **kwargs):
         """Writes the inventory data to the CSV file."""
         with open(self.FILENAME, "w", newline="") as csv_file:
@@ -79,7 +74,6 @@ class InventoryManager:
                 writer.writerow({"item": item.item, "quantity": item.quantity, "expiration_date": item.expiration_date, "price": item.price})
 
     
-    @authenticate_user
     def add_item(self, new_item_name):
         """Adds an item to the inventory."""
         for item in self.data:
@@ -92,7 +86,6 @@ class InventoryManager:
         self.write_data(filename = self.FILENAME,vscomment=f"New Item '{new_item_name}' added to inventory.")
         print(f"\nItem \"{new_item_name}\" successfully added to inventory.")
 
-    @authenticate_user
     def remove_item(self, item_name):
         """Removes an item from the inventory."""
         for item in self.data:
@@ -105,7 +98,6 @@ class InventoryManager:
 
 
 
-    @authenticate_user
     def update_item(self, item_name):
         """Updates an item in the inventory."""
         for item in self.data:
