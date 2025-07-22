@@ -50,3 +50,6 @@ class Warehouse:
             return sorted(self.items, key=lambda x: x.price)
         else:
             return self.items
+
+    def get_occupancy(self):
+        return len(self.items)
