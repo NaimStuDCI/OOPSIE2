@@ -44,11 +44,8 @@ class Item:
 class InventoryManager:
     """Manages the warehouse inventory using a CSV file."""
     FILENAME = "warehouse_inventory.csv"
-    DIRECTORY = "./backups/"
     def __init__(self):
         """Initializes the InventoryManager and loads the inventory data."""
-        if not os.path.exists(self.DIRECTORY):
-            os.makedirs(self.DIRECTORY)
         self.data = self.load_data()
 
     def load_data(self):
@@ -103,17 +100,7 @@ class InventoryManager:
         for item in self.data:
             if item.item == item_name:
                 item.update_values()
-
-                # Decorate / undecorate method "write_data()" with "use_version_system_oop(filename, vscomment)"
-                # dummy = self.write_data
-                # self.write_data = use_version_system_oop(self.FILENAME, f"Item '{item_name}' updated.")(self.write_data)
-                # self.write_data()
-                # self.write_data = dummy
-
                 self.write_data(filename = self.FILENAME, vscomment=f"Item '{item_name}' updated.")
-                #v_manager = VersionManager()
-                #v_manager.update_backups(self.FILENAME, f"Item '{item_name}' updated.")
-
                 print(f"\nItem \"{item_name}\" successfully updated.")
                 return
         print(f"\nItem \"{item_name}\" not found in inventory.")
