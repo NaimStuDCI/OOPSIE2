@@ -1,20 +1,25 @@
-from datetime import date, datetime
+from datetime import date
+
 
 class Item:
-    def __init__(self, name, quantity=0, expiration_date="1970-01-01", price=0.0):
+    def __init__(self, name, quantity=0, expiration_date=date(1970, 1, 1), price=0.0):
         self.name = name
-        self.quantity = int(quantity)
+        self.quantity = quantity
         self.expiration_date = expiration_date
-        self.price = float(price)
+        self.price = price
 
     def is_expired(self, today=None):
         today = today or date.today()
-        return datetime.strptime(self.expiration_date, "%Y-%m-%d").date() < today
+        return self.expiration_date < today
 
     def update(self, quantity=None, expiration_date=None, price=None):
-        if quantity is not None: self.quantity = int(quantity)
-        if expiration_date is not None: self.expiration_date = expiration_date
-        if price is not None: self.price = float(price)
+        if quantity is not None:
+            self.quantity = quantity
+        if expiration_date is not None:
+            self.expiration_date = expiration_date
+        if price is not None:
+            self.price = price
+
 
 class Warehouse:
     def __init__(self):
@@ -41,15 +46,10 @@ class Warehouse:
     def search_item(self, name: str):
         return next((item for item in self.items if item.name == name), None)
 
-    def get_sorted_items(self, key: str):
-        if key == "quantity":
-            return sorted(self.items, key=lambda x: x.quantity)
-        elif key == "expiration_date":
-            return sorted(self.items, key=lambda x: datetime.strptime(x.expiration_date, "%Y-%m-%d"))
-        elif key == "price":
-            return sorted(self.items, key=lambda x: x.price)
-        else:
+    def get_sorted_items(self, sort_key=None):
+        if sort_key is None:
             return self.items
+        return sorted(self.items, key=sort_key)
 
     def get_occupancy(self):
         return len(self.items)

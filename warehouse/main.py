@@ -1,14 +1,19 @@
-from repositories.item_repository import ItemRepository
-from domain.models import Warehouse, Item
 from os import system
-import re
-from datetime import datetime
-from helpers import input_item, print_report
+
+from domain.models import Warehouse
+from helpers import input_item, input_item_updates, print_report
+from repositories.item_repository import ItemRepository
+
+
+SORT_KEYS = {
+    "price": lambda x: x.price,
+    "quantity": lambda x: x.quantity,
+    "expiration_date": lambda x: x.expiration_date
+}
 
 clear_crt = "clear"
 filename = "warehouse_inventory.csv"
 repository = ItemRepository(filename)
-
 
 class MenuManager:
     running = True
@@ -56,17 +61,12 @@ class MenuManager:
 
             case 3:
                 system(clear_crt)
-                name = input("Item to update: ")
-                quantity = input("New quantity (or blank): ")
-                date_str = input("New expiration date (or blank): ")
-                price = input("New price (or blank): ")
-                updates = {}
-                if quantity: updates["quantity"] = quantity
-                if date_str: updates["expiration_date"] = date_str
-                if price: updates["price"] = price
-                warehouse.update_item(name, updates)
-                repository.save_all(warehouse.items)
-                print("\nItem updated.")
+                existing_names = [item.name for item in warehouse.items]
+                name, updates = input_item_updates(existing_names, warehouse)
+                if name:
+                    warehouse.update_item(name, updates)
+                    repository.save_all(warehouse.items)
+                    print("\nItem updated.")
                 input("\nPress ENTER to continue.")
 
             case 4:
@@ -92,19 +92,19 @@ class MenuManager:
 
             case 7:
                 system(clear_crt)
-                sorted_items = warehouse.get_sorted_items("expiration_date")
+                sorted_items = warehouse.get_sorted_items(sort_key=SORT_KEYS["expiration_date"])
                 print_report(sorted_items)
                 input("\nPress ENTER to continue.")
 
             case 8:
                 system(clear_crt)
-                sorted_items = warehouse.get_sorted_items("price")
+                sorted_items = warehouse.get_sorted_items(sort_key=SORT_KEYS["price"])
                 print_report(sorted_items)
                 input("\nPress ENTER to continue.")
 
             case 9:
                 system(clear_crt)
-                sorted_items = warehouse.get_sorted_items("quantity")
+                sorted_items = warehouse.get_sorted_items(sort_key=SORT_KEYS["quantity"])
                 print_report(sorted_items)
                 input("\nPress ENTER to continue.")
 
