@@ -1,9 +1,11 @@
-from csv_handler import load_items, save_items
+# from csv_handler import load_items, save_items
+from repositories.item_repository import ItemRepository
 from domain.models import Warehouse, Item
 from os import system
 
 clear_crt = "clear"
 filename = "warehouse_inventory.csv"
+repository = ItemRepository(filename)
 
 def print_report(items):
     print(f"\n{'Item':<20} {'Quantity':<10} {'Expiration Date':<20} {'Price':<10}")
@@ -44,7 +46,8 @@ class MenuManager:
                 date_str = input("Expiration Date (YYYY-MM-DD): ")
                 price = input("Price: ")
                 warehouse.add_item(Item(name, quantity, date_str, price))
-                save_items(filename, warehouse.items)
+                # save_items(filename, warehouse.items)
+                repository.save_all(warehouse.items)
                 print("\nItem added.")
                 input("\nPress ENTER to continue.")
 
@@ -52,7 +55,8 @@ class MenuManager:
                 system(clear_crt)
                 name = input("Item name to remove: ")
                 warehouse.remove_item(name)
-                save_items(filename, warehouse.items)
+                # save_items(filename, warehouse.items)
+                repository.save_all(warehouse.items)
                 print("\nItem removed.")
                 input("\nPress ENTER to continue.")
 
@@ -67,7 +71,8 @@ class MenuManager:
                 if date_str: updates["expiration_date"] = date_str
                 if price: updates["price"] = price
                 warehouse.update_item(name, updates)
-                save_items(filename, warehouse.items)
+                # save_items(filename, warehouse.items)
+                repository.save_all(warehouse.items)
                 print("\nItem updated.")
                 input("\nPress ENTER to continue.")
 
@@ -119,8 +124,12 @@ class MenuManager:
                 input("\nInvalid input! Press ENTER to try again.")
 
 # Setup
+# warehouse = Warehouse()
+# warehouse.items = load_items(filename)
+
 warehouse = Warehouse()
-warehouse.items = load_items(filename)
+warehouse.items = repository.load_all()
+
 manager = MenuManager()
 
 while manager.running:
