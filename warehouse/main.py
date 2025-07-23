@@ -1,15 +1,14 @@
 from repositories.item_repository import ItemRepository
 from domain.models import Warehouse, Item
 from os import system
+import re
+from datetime import datetime
+from helpers import input_item, print_report
 
 clear_crt = "clear"
 filename = "warehouse_inventory.csv"
 repository = ItemRepository(filename)
 
-def print_report(items):
-    print(f"\n{'Item':<20} {'Quantity':<10} {'Expiration Date':<20} {'Price':<10}")
-    for item in items:
-        print(f"{item.name:<20} {item.quantity:<10} {item.expiration_date:<20} {item.price:<10}")
 
 class MenuManager:
     running = True
@@ -40,11 +39,9 @@ class MenuManager:
 
             case 1:
                 system(clear_crt)
-                name = input("Item name: ")
-                quantity = input("Quantity: ")
-                date_str = input("Expiration Date (YYYY-MM-DD): ")
-                price = input("Price: ")
-                warehouse.add_item(Item(name, quantity, date_str, price))
+                existing_names = [item.name for item in warehouse.items]
+                item = input_item(existing_names)
+                warehouse.add_item(item)
                 repository.save_all(warehouse.items)
                 print("\nItem added.")
                 input("\nPress ENTER to continue.")
@@ -118,6 +115,7 @@ class MenuManager:
 
             case _:
                 input("\nInvalid input! Press ENTER to try again.")
+
 
 # Setup
 warehouse = Warehouse()
