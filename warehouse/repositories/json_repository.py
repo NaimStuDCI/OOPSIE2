@@ -1,8 +1,9 @@
 from datetime import datetime
 from domain.models import Item
 import json
+from repositories.abstract_repository import AbstractItemRepository
 
-class ItemRepository:
+class ItemRepository(AbstractItemRepository):
     def __init__(self, filepath):
         self.filepath = filepath + ".json"
     def load_all(self):

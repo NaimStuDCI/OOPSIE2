@@ -1,9 +1,9 @@
 import csv
 from datetime import datetime
 from domain.models import Item
+from repositories.abstract_repository import AbstractItemRepository
 
-
-class ItemRepository:
+class ItemRepository(AbstractItemRepository):
     def __init__(self, filepath):
         self.filepath = filepath + ".csv"
 
