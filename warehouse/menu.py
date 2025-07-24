@@ -48,7 +48,7 @@ class MenuManager:
                 name = input("Item name to remove: ")
                 self.warehouse.remove_item(name)
                 self.repository.save_all(self.warehouse.items)
-                print("\nItem removed.")
+                print("\nIf Item exists under this name, it's been removed.")
                 input("\nPress ENTER to continue.")
 
             case 3:

@@ -1,6 +1,6 @@
 import os
 
-WAREHOUSE_FILE = "warehouse_inventory"
+WAREHOUSE_FILE = "./data/warehouse_inventory"
 
 CLEAR_COMMAND = "cls" if os.name == "nt" else "clear"
 
