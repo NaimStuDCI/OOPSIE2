@@ -46,7 +46,7 @@ def print_report(items):
         formatted_date = item.expiration_date.strftime("%Y-%m-%d")
         print(f"{item.name:<20} {item.quantity:<10} {formatted_date:<20} {item.price:<10.2f}")
 
-########################################################################################from datetime import datetime
+#########from datetime import datetime
 
 def input_item_updates(existing_names, warehouse):
     name = input("Item to update: ").strip()
