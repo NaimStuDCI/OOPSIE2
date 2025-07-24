@@ -1,0 +1,140 @@
+[
+  {
+    "item": "Mascara",
+    "quantity": 48,
+    "expiration_date": "2025-04-21",
+    "price": 77.06
+  },
+  {
+    "item": "Jacket",
+    "quantity": 19,
+    "expiration_date": "2025-04-02",
+    "price": 43.06
+  },
+  {
+    "item": "Smartwatch",
+    "quantity": 82,
+    "expiration_date": "2025-08-14",
+    "price": 59.87
+  },
+  {
+    "item": "Binoculars",
+    "quantity": 21,
+    "expiration_date": "2025-05-12",
+    "price": 23.85
+  },
+  {
+    "item": "Backpack",
+    "quantity": 32,
+    "expiration_date": "2025-05-18",
+    "price": 82.02
+  },
+  {
+    "item": "Board Game",
+    "quantity": 28,
+    "expiration_date": "2025-02-18",
+    "price": 54.37
+  },
+  {
+    "item": "Coffee Mug",
+    "quantity": 36,
+    "expiration_date": "2025-06-10",
+    "price": 31.45
+  },
+  {
+    "item": "Wardrobe",
+    "quantity": 78,
+    "expiration_date": "2025-04-22",
+    "price": 50.96
+  },
+  {
+    "item": "External Hard Drive",
+    "quantity": 57,
+    "expiration_date": "2025-02-28",
+    "price": 24.59
+  },
+  {
+    "item": "Dumbbells",
+    "quantity": 64,
+    "expiration_date": "2025-07-28",
+    "price": 73.19
+  },
+  {
+    "item": "Foundation",
+    "quantity": 35,
+    "expiration_date": "2025-06-19",
+    "price": 87.12
+  },
+  {
+    "item": "Sunglasses",
+    "quantity": 38,
+    "expiration_date": "2025-03-09",
+    "price": 57.12
+  },
+  {
+    "item": "Magazine",
+    "quantity": 74,
+    "expiration_date": "2025-02-25",
+    "price": 50.56
+  },
+  {
+    "item": "Dining Table",
+    "quantity": 53,
+    "expiration_date": "2025-03-18",
+    "price": 39.02
+  },
+  {
+    "item": "Marshmallows",
+    "quantity": 10,
+    "expiration_date": "5000-04-15",
+    "price": 1.99
+  },
+  {
+    "item": "Cornflakes",
+    "quantity": 3,
+    "expiration_date": "3002-08-01",
+    "price": 1.49
+  },
+  {
+    "item": "Bed",
+    "quantity": 7,
+    "expiration_date": "2025-05-30",
+    "price": 1.2
+  },
+  {
+    "item": "House",
+    "quantity": 45,
+    "expiration_date": "1999-01-01",
+    "price": 999.9
+  },
+  {
+    "item": "lizard",
+    "quantity": 6,
+    "expiration_date": "2035-01-01",
+    "price": 4.99
+  },
+  {
+    "item": "Apples",
+    "quantity": 2,
+    "expiration_date": "1970-01-01",
+    "price": 1.99
+  },
+  {
+    "item": "Comicbook",
+    "quantity": 1,
+    "expiration_date": "3000-01-01",
+    "price": 2.49
+  },
+  {
+    "item": "Peanuts",
+    "quantity": 43,
+    "expiration_date": "2025-01-04",
+    "price": 20.25
+  },
+  {
+    "item": "Chocolate Bar",
+    "quantity": 2000,
+    "expiration_date": "2027-02-08",
+    "price": 0.99
+  }
+]

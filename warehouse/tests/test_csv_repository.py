@@ -2,7 +2,7 @@ import unittest
 import tempfile
 import os
 from datetime import date
-from repositories.item_repository import ItemRepository
+from repositories.csv_repository import ItemRepository
 from domain.models import Item
 
 class TestItemRepository(unittest.TestCase):

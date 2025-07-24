@@ -5,7 +5,7 @@ from domain.models import Item
 
 class ItemRepository:
     def __init__(self, filepath):
-        self.filepath = filepath
+        self.filepath = filepath + ".csv"
 
     def load_all(self):
         items = []

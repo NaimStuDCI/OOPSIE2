@@ -1,7 +1,6 @@
 import os
 
-
-WAREHOUSE_FILE = "warehouse_inventory.csv"
+WAREHOUSE_FILE = "warehouse_inventory"
 
 CLEAR_COMMAND = "cls" if os.name == "nt" else "clear"
 

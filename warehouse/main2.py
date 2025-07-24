@@ -1,7 +1,7 @@
 from config import WAREHOUSE_FILE, CLEAR_COMMAND, SORT_KEYS
 from domain.models import Warehouse
 from menu import MenuManager
-from repositories.item_repository import ItemRepository
+from repositories.csv_repository import ItemRepository
 
 
 def main():

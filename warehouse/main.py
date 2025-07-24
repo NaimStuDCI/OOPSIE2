@@ -2,7 +2,7 @@ from os import system
 
 from domain.models import Warehouse
 from helpers import input_item, input_item_updates, print_report
-from repositories.item_repository import ItemRepository
+from repositories.csv_repository import ItemRepository
 
 
 SORT_KEYS = {

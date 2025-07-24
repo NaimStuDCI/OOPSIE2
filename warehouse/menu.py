@@ -112,7 +112,7 @@ class MenuManager:
 if __name__ == "__main__":
     from config import WAREHOUSE_FILE, CLEAR_COMMAND, SORT_KEYS
     from domain.models import Warehouse
-    from repositories.item_repository import ItemRepository
+    from repositories.csv_repository import ItemRepository
     
 
     # Setup for standalone use
